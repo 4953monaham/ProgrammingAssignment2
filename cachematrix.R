@@ -1,15 +1,22 @@
-## Put comments here that give an overall description of what your
-## functions do
+# week 3 
+#Assignment 2: Caching the Inverse of a Matrix
+# Goal: write a function to cache potentially time-consuming computations.
 
-## Write a short comment describing this function
-
-makeCacheMatrix <- function(x = matrix()) {
-
-}
+#Write the following functions:
+#1)    makeCacheMatrix: This function creates a special "matrix" object 
+#		that can cache its inverse.
 
 
-## Write a short comment describing this function
 
-cacheSolve <- function(x, ...) {
-        ## Return a matrix that is the inverse of 'x'
+makeCacheMatrix <- function(sqMatrix = matrix()) {
+    invMatrix <- NULL 		## set invMatrix to null
+    set <- function(y) {	## creates set function, takes one variable
+        sqMatrix <<- y		## lexical scoping
+        invMatrix <<- NULL	## lexical scoping
+    }
+    get <- function() sqMatrix 	## creates get function, and uses the 
+						##lexical scoping variable
+    setinverse <- function(inverse) invMatrix <<- inverse ##a function that defines its input as lexical
+    getinverse <- function() invMatrix
+    list(set=set, get=get, setinverse=setinverse, getinverse=getinverse)
 }
